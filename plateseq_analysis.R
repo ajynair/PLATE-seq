@@ -40,8 +40,8 @@ head(fastq)
 # write.table(fastq, file="data/20220520_validation/Plateseq/20220616_musHSC_val/barcodes_trimmed.fasta",quote=F,row.names = F,col.names = F)
 
 # ## cutadapt command
-
-system(cutadapt --error-rate 0.061 --no-indels --cores 10 --action=trim -g file:barcodes_trimmed.fasta -o trimmed-{name}.R1.fastq.gz -p trimmed-{name}.R2.fastq.gz Schwabe_S7_L003_R1_001.fastq.gz Schwabe_S7_L003_R2_001.fastq.gz)
+command <- "cutadapt --error-rate 0.061 --no-indels --cores 10 --action=trim -g file:barcodes_trimmed.fasta -o trimmed-{name}.R1.fastq.gz -p trimmed-{name}.R2.fastq.gz Schwabe_S7_L003_R1_001.fastq.gz Schwabe_S7_L003_R2_001.fastq.gz"
+system(command = command)
 
 # explanation:
 # --error-rate 0.061 because 0.061*33=2.01; so two mismatches were allowed for a 33nt long trimmed adapter
